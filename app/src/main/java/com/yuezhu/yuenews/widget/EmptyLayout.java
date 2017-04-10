@@ -132,7 +132,7 @@ public class EmptyLayout extends FrameLayout {
     /**
      * @param
      * @return
-     * @desc : 影藏网络错误图标
+     * @desc : 隐藏网络错误图标
      * @author yuezhusust
      * @time 2017/3/30  17:34
      */
