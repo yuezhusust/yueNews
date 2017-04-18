@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- EmptyLayout -->
     <declare-styleable name="EmptyLayout">
         <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+
+    <!-- SplashButton，简写spb -->
+    <declare-styleable name="SplashButton">
+       <attr name="spb_mode" format="enum">
+           <enum name="normal" value="201"></enum>
+           <enum name="check" value="202"/>
+           <enum name="icon_check_invisible" value="203"/>
+           <enum name="icon_check_change" value="204"/>
+       </attr>
+        <attr name="spb_shape" format="enum">
+            <enum name="round_rect" value="101"/>
+            <enum name="arc" value="102"/>
+            <enum name="rect" value="103"/>
+        </attr>
+        <attr name="spb_gravity" format="enum">
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="spb_auto_check" format="boolean"/>
+        <attr name="spb_checked" format="boolean"/>
+        <attr name="spb_bg_color" format="color"/>
+        <attr name="spb_border_color" format="color"/>
+        <attr name="spb_text_color" format="color"/>
+        <attr name="spb_bg_color_check" format="color"/>
+        <attr name="spg_border_color_check" format="color"/>
+        <attr name="spb_text_color_check" format="color"/>
+        <attr name="spb_text" format="string"/>
+        <attr name="spb_text_check" format="string"/>
+        <attr name="spb_text_size" format="dimension"/>
+        <attr name="spb_border_width" format="dimension"/>
+        <attr name="spb_border_radius" format="dimension"/>
+        <attr name="spb_vertical_padding" format="dimension"/>
+        <attr name="spb_horizontal_padding" format="dimension"/>
+        <attr name="spb_icon_padding" format="dimension"/>
+        <attr name="spb_icon" format="reference"/>
+        <attr name="spb_icon_change" format="reference"/>
+
     </declare-styleable>
 </resources>

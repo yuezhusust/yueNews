@@ -1,6 +1,7 @@
 package com.yuezhu.yuenews.moudele.base;
 
 import com.trello.rxlifecycle.LifecycleTransformer;
+import com.yuezhu.yuenews.widget.EmptyLayout;
 
 /**
  * @name YueNews
@@ -53,5 +54,5 @@ public interface IBaseView {
      *  @author :yuezhusust
      *  @time :2017/4/1  14:57
      */
-    void showNetWorkError();
+    void showNetWorkError(EmptyLayout.RetryListener retryListener);
 }

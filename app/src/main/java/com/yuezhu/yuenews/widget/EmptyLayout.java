@@ -179,6 +179,9 @@ public class EmptyLayout extends FrameLayout {
                 break;
         }
     }
+    public void setmRetyrListener(RetryListener retyrListener){
+        this.mRetyrListener = retyrListener;
+    }
 
     @OnClick(R.id.text_net_error)
     public void onClick() {
