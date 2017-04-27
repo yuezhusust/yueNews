@@ -1,6 +1,7 @@
 package com.yuezhu.yuenews.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
@@ -9,6 +10,9 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+
+import com.yuezhu.yuenews.R;
+import com.yuezhu.yuenews.utils.MeasureUtils;
 
 /**
  * @name YueNews
@@ -48,7 +52,7 @@ public class SplashButton extends View {
     //选中状态字体颜色
     private int mTextColorChecked = Color.parseColor("#ff666666");
     //遮罩颜色
-    private int mScrimColor = Color.argb(0x66,0xc0,0xc0,0xc0);
+    private int mScrimColor = Color.argb(0x66, 0xc0, 0xc0, 0xc0);
     //字体大小
     private float mTextSize;
     //字体宽带和高度
@@ -74,7 +78,7 @@ public class SplashButton extends View {
     //边框矩形
     private RectF mRect;
     //装饰的icon
-    private Drawable mDecorateIcon ;
+    private Drawable mDecorateIcon;
     //变化模式下的icon
     private Drawable mDecorateIconChange;
     //设置图片的位置，只支持左右两边
@@ -97,7 +101,7 @@ public class SplashButton extends View {
      *                access the current theme, resources, etc.
      */
     public SplashButton(Context context) {
-       this(context,null);
+        this(context, null);
     }
 
     /**
@@ -118,9 +122,57 @@ public class SplashButton extends View {
      */
     public SplashButton(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
+        mBorderWidth = MeasureUtils.dp2px(context, 0.5f);
+        mRadius = MeasureUtils.dp2px(context, 5f);
+        mHorizontalPadding = (int) MeasureUtils.dp2px(context, 5f);
+        mVerticalPadding = (int) MeasureUtils.dp2px(context, 5f);
+        mIconPadding = (int) MeasureUtils.dp2px(context, 3f);
+        mTextSize = MeasureUtils.sp2px(context, 14f);
+        if (attrs != null) {
+            final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SplashButton);
+            try {
+                mTagShape = typedArray.getInteger(R.styleable.SplashButton_spb_mode, MODE_NORMAL);
+                if (mTagMode == MODE_CHECK || mTagMode == MODE_ICON_CHECK_INVISIBLE || mTagMode == MODE_ICON_CHECK_CHANGE) {
+                    mIsAutoToggleCheck = true;
+                    mIsChecked = typedArray.getBoolean(R.styleable.SplashButton_spb_checked, false);
+                    mDecorateIconChange = typedArray.getDrawable(R.styleable.SplashButton_spb_icon_change);
+                }
+                mIsAutoToggleCheck = typedArray.getBoolean(R.styleable.SplashButton_spb_auto_check, mIsAutoToggleCheck);
+
+                mText = typedArray.getString(R.styleable.SplashButton_spb_text);
+                mTextChecked = typedArray.getString(R.styleable.SplashButton_spb_text_check);
+                mTextSize = typedArray.getDimension(R.styleable.SplashButton_spb_text_size, mTextSize);
+                mBgColor = typedArray.getColor(R.styleable.SplashButton_spb_bg_color, Color.WHITE);
+                mBorderColor = typedArray.getColor(R.styleable.SplashButton_spb_border_color, Color.parseColor("#ff333333"));
+                mTextColor = typedArray.getColor(R.styleable.SplashButton_spb_text_color, Color.parseColor("#ff666666"));
+                mBgColorChecked = typedArray.getColor(R.styleable.SplashButton_spb_bg_color_check, mBgColor);
+                mBorderColorChecked = typedArray.getColor(R.styleable.SplashButton_spg_border_color_check, mBorderColor);
+                mTextColorChecked = typedArray.getColor(R.styleable.SplashButton_spb_text_color_check, mTextColor);
+                mBorderWidth = typedArray.getDimension(R.styleable.SplashButton_spb_border_width, mBorderWidth);
+                mRadius = typedArray.getDimension(R.styleable.SplashButton_spb_border_radius, mRadius);
+                mHorizontalPadding = (int) typedArray.getDimension(R.styleable.SplashButton_spb_horizontal_padding, mHorizontalPadding);
+                mVerticalPadding = (int) typedArray.getDimension(R.styleable.SplashButton_spb_vertical_padding, mVerticalPadding);
+                mIconPadding = (int) typedArray.getDimension(R.styleable.SplashButton_spb_icon_padding, mIconPadding);
+                mDecorateIcon = typedArray.getDrawable(R.styleable.SplashButton_spb_icon);
+                mIconGravity = typedArray.getInteger(R.styleable.SplashButton_spb_gravity, Gravity.LEFT);
+            } finally {
+                typedArray.recycle();
+            }
+            if (mTagMode == MODE_ICON_CHECK_CHANGE && mDecorateIconChange == null){
+                throw  new RuntimeException("You must set the drawable by 'tag_icon_change' property in" +
+                        "MODE_ICON_CHECK_CHANGE mode ");
+            }
+            if (mDecorateIcon == null && mDecorateIconChange == null){
+                mIconPadding = 0;
+            }
+            mRect = new RectF();
+            mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            setClickable(true);
+
+        }
     }
 }
