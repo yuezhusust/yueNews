@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.yuezhu.yuenews.module.home.ui.SplashActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_github"/>
+    <com.yuezhu.yuenews.widget.SplashButton
+        android:id="@+id/sb_skip"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        app:spb_text="跳过 3"
+        app:spb_auto_check="false"
+        app:spb_bg_color="#aaFF4081"
+        app:spb_border_color="#aaFF4081"
+        app:spb_shape="arc"
+        app:spb_text_color="@android:color/white"/>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

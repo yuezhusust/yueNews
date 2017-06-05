@@ -50,7 +50,7 @@ public class EmptyLayout extends FrameLayout {
     @BindView(R.id.empty_loading)
     SpinKitView emptyLoading;
     @BindView(R.id.empty_layout)
-    private FrameLayout emptyLayout;
+     FrameLayout emptyLayout;
 
     public EmptyLayout(@NonNull Context context) {
         this(context, null);

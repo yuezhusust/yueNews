@@ -5,8 +5,14 @@ import android.os.Bundle;
 
 import com.yuezhu.yuenews.R;
 import com.yuezhu.yuenews.moudele.base.BaseActivity;
+import com.yuezhu.yuenews.widget.SplashButton;
+
+import butterknife.BindView;
 
 public class SplashActivity extends BaseActivity {
+    @BindView(R.id.sb_skip)
+    SplashButton splashButton;
+    private boolean mIsSkip = false;
     /**
      * @param:
      * @return:
@@ -16,7 +22,8 @@ public class SplashActivity extends BaseActivity {
      */
     @Override
     protected int attachLayoutRes() {
-        return 0;
+
+        return R.layout.activity_splash;
     }
 
     /**
