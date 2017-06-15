@@ -20,29 +20,30 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:${rootProject.ext.support}"
     compile "com.android.support:recyclerview-v7:${rootProject.ext.support}"
     compile "com.android.support:support-v4:${rootProject.ext.support}"
     compile "com.android.support:design:${rootProject.ext.support}"
     //loading 效果库SpinKit
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
-    compile 'com.github.ybq:Android-SpinKit:1.1.0'
     // butterknife 依赖注入
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
     // rxjava
+    // https://mvnrepository.com/artifact/javax.inject/javax.inject
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
     compile 'io.reactivex:rxjava:1.1.9'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
-    // https://mvnrepository.com/artifact/javax.inject/javax.inject
-    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 
+    //circleimageview
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 
-
+   // testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

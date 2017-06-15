@@ -5,14 +5,18 @@ import android.os.Bundle;
 
 import com.yuezhu.yuenews.R;
 import com.yuezhu.yuenews.moudele.base.BaseActivity;
+import com.yuezhu.yuenews.utils.RxHelper;
 import com.yuezhu.yuenews.widget.SplashButton;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import rx.Subscriber;
 
 public class SplashActivity extends BaseActivity {
     @BindView(R.id.sb_skip)
     SplashButton splashButton;
     private boolean mIsSkip = false;
+
     /**
      * @param:
      * @return:
@@ -60,6 +64,38 @@ public class SplashActivity extends BaseActivity {
      */
     @Override
     protected void updateView(boolean isRefresh) {
+        RxHelper.countdown(5).compose(this.<Integer>bindToLife()).subscribe(
+                new Subscriber() {
+                    @Override
+                    public void onCompleted() {
+                        doSkip();
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        doSkip();
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        splashButton.setText("跳过" + o);
+                    }
+
+                }
+        );
+
+    }
+
+    private void doSkip() {
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
+    }
+
+    @OnClick(R.id.sb_skip)
+    public void onClick() {
+        doSkip();
     }
 }
