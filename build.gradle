@@ -24,7 +24,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    minSdk = 16
+    minSdk = 14
     targetSdk = 25
     compileSdk = 25
     support = "25.0.1"

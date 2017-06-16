@@ -35,7 +35,10 @@ import java.lang.reflect.Field;
  * @author: yuezhusust
  * @time 2017/6/6 15:42
  */
-
+/**
+ *
+ * 开源项目：https://github.com/ikew0ng/SwipeBackLayout
+ */
 public class SwipeBackLayout extends FrameLayout {
     //以最小快速滑动速度
     private static final int MIN_FLING_VELOCITY = 400; // dips per second
@@ -199,7 +202,7 @@ public class SwipeBackLayout extends FrameLayout {
         }
         try {
             return mDragHelper.shouldInterceptTouchEvent(ev);
-        } catch (ArrayIndexOutOfBoundsException) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
     }
@@ -338,7 +341,7 @@ public class SwipeBackLayout extends FrameLayout {
                         + OVER_SCROLL_DISTANCE) : 0;
             }
             //让拖拽视图滑到指定位置
-            mDragHelper.settleCapturedViewAt(left, top)；
+            mDragHelper.settleCapturedViewAt(left, top);
             invalidate();
         }
 
@@ -369,9 +372,9 @@ public class SwipeBackLayout extends FrameLayout {
         TypedArray a = activity.getTheme().obtainStyledAttributes(
                 new int[]{android.R.attr.windowBackground}
         );
-        int background = a.getResourceId(0,0);
+        int background = a.getResourceId(0, 0);
         a.recycle();
-        ViewGroup decor =(ViewGroup)activity.getWindow().getDecorView();
+        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
         ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
         decorChild.setBackgroundResource(background);
         decor.removeView(decorChild);
@@ -381,36 +384,39 @@ public class SwipeBackLayout extends FrameLayout {
         setEdgeFlag(edgeFlag);
 
     }
-    public int getEdgeFlag(){
+
+    public int getEdgeFlag() {
         return mEdgeFlag;
     }
+
     public void setEdgeFlag(@EdgeFlag int edgeFlag) {
         mEdgeFlag = edgeFlag;
         mDragHelper.setEdgeTrackingEnabled(edgeFlag);
-        if ((mEdgeFlag&EDGE_LEFT)!=0 && mShadowLeft==null){
-            mShadowLeft= ContextCompat.getDrawable(mAttachActivity, R.mipmap.ic_shadow_left);
+        if ((mEdgeFlag & EDGE_LEFT) != 0 && mShadowLeft == null) {
+            mShadowLeft = ContextCompat.getDrawable(mAttachActivity, R.mipmap.ic_shadow_left);
         }
-        if ((mEdgeFlag&EDGE_RIGHT)!=0 && mShadowRight == null){
-            mShadowRight=ContextCompat.getDrawable(mAttachActivity,R.mipmap.ic_shadow_right);
+        if ((mEdgeFlag & EDGE_RIGHT) != 0 && mShadowRight == null) {
+            mShadowRight = ContextCompat.getDrawable(mAttachActivity, R.mipmap.ic_shadow_right);
         }
-        if ((mEdgeFlag&EDGE_BOTTOM)!=0 && mShadowBottom == null){
-            mShadowBottom=ContextCompat.getDrawable(mAttachActivity,R.mipmap.ic_shadow_bottom);
+        if ((mEdgeFlag & EDGE_BOTTOM) != 0 && mShadowBottom == null) {
+            mShadowBottom = ContextCompat.getDrawable(mAttachActivity, R.mipmap.ic_shadow_bottom);
         }
         invalidate();
     }
+
     /**
-     *  @methodName: setEdgeSize
-     *  @desc:  设置可拖拽的边缘大小
-     *  @param:   [edgeSize]
-     *  @return: void
-     *  @author: yuezhusust
-     *  @time: 2017/6/15  17:10
+     * @methodName: setEdgeSize
+     * @desc: 设置可拖拽的边缘大小
+     * @param: [edgeSize]
+     * @return: void
+     * @author: yuezhusust
+     * @time: 2017/6/15  17:10
      */
-    public void setEdgeSize(int edgeSize){
+    public void setEdgeSize(int edgeSize) {
         try {
             Field edgeSizeField = mDragHelper.getClass().getDeclaredField("mEdgeSize");
             edgeSizeField.setAccessible(true);
-            edgeSizeField.setInt(mDragHelper,edgeSize);
+            edgeSizeField.setInt(mDragHelper, edgeSize);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -419,7 +425,7 @@ public class SwipeBackLayout extends FrameLayout {
     }
 
     /**
-     *  枚举类型
+     * 枚举类型
      */
     @Retention(RetentionPolicy.SOURCE)
     @Target(ElementType.PARAMETER)

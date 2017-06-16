@@ -21,6 +21,10 @@
         <activity
             android:name=".module.home.ui.HomeActivity"
             android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".module.manage.setting.SettingActivity"
+            android:label="@string/title_activity_setting"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

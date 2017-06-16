@@ -1,4 +1,4 @@
-package com.yuezhu.yuenews.moudele.base;
+package com.yuezhu.yuenews.module.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

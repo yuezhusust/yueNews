@@ -1,4 +1,4 @@
-package com.yuezhu.yuenews.moudele.base;
+package com.yuezhu.yuenews.module.base;
 
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.yuezhu.yuenews.widget.EmptyLayout;

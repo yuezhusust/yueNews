@@ -31,6 +31,10 @@ dependencies {
     // rxjava
     // https://mvnrepository.com/artifact/javax.inject/javax.inject
     compile group: 'javax.inject', name: 'javax.inject', version: '1'
+
+    //circleimageview
+
+    // testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
     compile 'com.jakewharton:butterknife:8.5.1'
@@ -40,10 +44,6 @@ dependencies {
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
-
-    //circleimageview
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
-   // testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

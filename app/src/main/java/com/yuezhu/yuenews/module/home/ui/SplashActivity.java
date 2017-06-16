@@ -1,10 +1,9 @@
 package com.yuezhu.yuenews.module.home.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Intent;
 
 import com.yuezhu.yuenews.R;
-import com.yuezhu.yuenews.moudele.base.BaseActivity;
+import com.yuezhu.yuenews.module.base.BaseActivity;
 import com.yuezhu.yuenews.utils.RxHelper;
 import com.yuezhu.yuenews.widget.SplashButton;
 
@@ -87,6 +86,12 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void doSkip() {
+        if (!mIsSkip){
+            mIsSkip=true;
+            finish();
+            startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+            overridePendingTransition(R.anim.hold,R.anim.zoom_in_exit);
+        }
     }
 
     @Override
